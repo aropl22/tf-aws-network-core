@@ -5,7 +5,6 @@ module "vpc1" {
   vpc_name       = var.vpc_name
 }
 
-
 module "subnet1" {
   source = "./subnet"
 
