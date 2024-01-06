@@ -4,6 +4,7 @@ The code deployes a network core on AWS:
 
 -VPC
 -Public Subnet
+-Private Subnet
 -Internet Gateway
 -Route Table
 -Security Group
@@ -76,3 +77,27 @@ sgroup_remote_rules = [
    remote_cidr_block = "YOUR PUBLIC IP ADDRESS"
     }
 ]
+
+my_subnets = {
+  "public_subnet" = {
+    cidr_block        = "10.100.200.0/24"
+    availability_zone = "us-west-1b"
+    tags = {
+      Name = "Public Subnet"
+  } },
+  "private_subnet" = {
+    cidr_block        = "10.100.201.0/24"
+    availability_zone = "us-west-1b"
+    tags = {
+      Name = "Private Subnet"
+  } }
+}
+
+## Outputs:
+
+aws_internet_gateway_id
+private_subnet_id
+public_subnet_id
+vpc_default_network_acl_id
+vpc_default_route_table
+vpc_id
