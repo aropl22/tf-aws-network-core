@@ -9,27 +9,16 @@ module "vpc1" {
 module "subnet1" {
   source = "./subnet"
 
-  vpc_id            = module.vpc1.vpc_id
-  cidr_block        = var.subnet_cidr_block
-  subnet_name       = var.subnet_name
-  availability_zone = var.availability_zone
-}
-
-module "subnet2" {
-  source = "./subnet"
-
-  vpc_id            = module.vpc1.vpc_id
-  cidr_block        = var.subnet2_cidr_block
-  subnet_name       = var.subnet2_name
-  availability_zone = var.availability_zone
+  vpc_id     = module.vpc1.vpc_id
+  my_subnets = var.my_subnets
 }
 
 module "network1" {
   source = "./network"
 
   vpc_id                 = module.vpc1.vpc_id
-  subnet_cidr            = module.subnet1.subnet_cidr
+  subnet_cidr            = module.subnet1.subnet_cidr["public_subnet"]
   default_route_table_id = module.vpc1.vpc_default_route_table_id
-  private_subnet_id      = module.subnet2.subnet_id
+  private_subnet_id      = module.subnet1.subnet_ids["private_subnet"]
 
 }

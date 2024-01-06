@@ -10,34 +10,13 @@ variable "vpc_cidr_block" {
   default     = "10.100.200.0/23"
 }
 
-variable "subnet_cidr_block" {
-  description = "subnet block"
-  type        = string
-  default     = "10.100.200.0/24"
-}
-
-variable "subnet_name" {
-  description = "Subnet name"
-  type        = string
-  default     = "Public Subnet"
-}
-
-variable "subnet2_cidr_block" {
-  description = "subnet block"
-  type        = string
-  default     = "10.100.201.0/24"
-}
-
-variable "subnet2_name" {
-  description = "Subnet name"
-  type        = string
-  default     = "Private Subnet"
-}
-
-variable "availability_zone" {
-  description = "AZ"
-  type        = string
-  default     = "us-west-1b"
+variable "my_subnets" {
+  description = "Subnets for VPC"
+  type = map(object({
+    cidr_block        = string
+    availability_zone = string
+    tags              = map(string)
+  }))
 }
 
 variable "sgroup_remote_rules" {

@@ -11,11 +11,11 @@ output "vpc_default_network_acl_id" {
 }
 
 output "public_subnet_id" {
-  value = module.subnet1.subnet_id
+  value = module.subnet1.subnet_ids["public_subnet"]
 }
 
 output "private_subnet_id" {
-  value = module.subnet2.subnet_id
+  value = module.subnet1.subnet_ids["private_subnet"]
 }
 
 output "aws_internet_gateway_id" {

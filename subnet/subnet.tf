@@ -1,10 +1,9 @@
 resource "aws_subnet" "subnet" {
 
-  vpc_id            = var.vpc_id
-  cidr_block        = var.cidr_block
-  availability_zone = var.availability_zone
+  for_each = var.my_subnets
 
-  tags = {
-    Name = "${var.subnet_name}"
-  }
+  vpc_id            = var.vpc_id
+  cidr_block        = each.value.cidr_block
+  availability_zone = each.value.availability_zone
+  tags              = each.value.tags
 }

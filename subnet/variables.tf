@@ -1,20 +1,12 @@
-variable "subnet_name" {
-  description = "VPC Name"
-  type        = string
+variable "my_subnets" {
+  description = "Subnets for VPC"
+  type = map(object({
+    cidr_block        = string
+    availability_zone = string
+    tags              = map(string)
+  }))
 }
-
-variable "cidr_block" {
-  description = "VPC block"
-  type        = string
-}
-
-variable "availability_zone" {
-  description = "Availability zone"
-  type        = string
-}
-
 variable "vpc_id" {
   description = "VPC ID"
   type        = string
 }
-
