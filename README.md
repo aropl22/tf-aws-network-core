@@ -9,6 +9,11 @@ The code deployes a network core on AWS:
 -Route Table  
 -Security Group  
 
+
+![GitHub Image](/img/tf-aws-network-core.jpg)
+
+
+
 Must define backend and AWS access keys
 Terraform defaults to using the local backend, which stores state as a plain file in the current working directory.
 
