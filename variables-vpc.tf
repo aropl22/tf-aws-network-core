@@ -19,11 +19,6 @@ variable "my_subnets" {
   }))
 }
 
-variable "sgroup_remote_rules" {
-  type = list(object({
-    port_from         = number
-    port_to           = number
-    protocol          = string
-    remote_cidr_block = string
-  }))
+variable "tags" {
+  type = map(any)
 }

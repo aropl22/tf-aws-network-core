@@ -18,3 +18,7 @@ variable "private_subnet_id" {
   description = "VPC ID"
   type        = string
 }
+
+variable "tags" {
+  type = map(any)
+}
